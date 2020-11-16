@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link href="./reset.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
+    <title>Piñafocus</title>
+  </head>
+  <body>
+    <!--Top Section-->
+    <main class="pomo" id="main">
+      <div class="container">
+        <header>
+          <img src="pineapple.svg" />
+          <p class="logo">Piñafocus</p>
+        </header>
+        <div class="pomodoro">
+          <div id="settings" class="pomodoro_settings">
+            <button id="pomo" class="active pomodoro--button">
+              Pomodoro
+            </button>
+            <button id="short" class="pomodoro--button">Short Break</button>
+            <button id="long" class="pomodoro--button">Long Break</button>
+          </div>
+          <div id="pomodoro-string" class="pomodoro_timer">25:00</div>
+          <div class="pomodoro_start">
+            <button class="btn-grad pomodoro_start--button">START</button>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div id="progress-bar"></div>
+        </div>
+      </div>
+    </main>
+    <!--Explaining pomodoro section-->
+    <section class="help-section">
+      <h1 class="h1">
+        A barebones browser-based Pomodoro timer to help you stay focused!
+      </h1>
+      <div class="section">
+        <h2>What is 🍍Piñafocus?</h2>
+        <p>
+          A very basic web based Pomodoro application that's written with
+          vanilla Javascript and HTML. It is a non-impressive pineapple clone of
+          the popular Pomodoro application that is ubiquitous today.
+        </p>
+      </div>
+      <div class="section">
+        <h2>What is the Pomodoro Technique?</h2>
+        <p>
+          A study technique designed to help break your tasks into sprints. This
+          has shown to increase productivity in the long-run, allowing you to
+          take breaks and achieve your wildest dreams. I recommend
+          <a href="https://todoist.com/productivity-methods/pomodoro-technique"
+            >Todoist's blog page</a
+          >, for more information.
+        </p>
+      </div>
+      <div class="section">
+        <h2>How do I use the Pomodoro timer?</h2>
+        <ol>
+          <li>Set the amount of time you want to work for the pomodoro.</li>
+          <li>Press the start button.</li>
+          <li>Work till the timer goes off.</li>
+          <li>Take a break when you're done.</li>
+          <li>Repeat until you're dead.</li>
+          <li>Profit 🍍!</li>
+        </ol>
+      </div>
+    </section>
+    <!--Contact information-->
+    <footer>
+      <p>
+        Made with 100%
+        <a target="_blank" href="https://github.com/pineapplegiant">gmo</a> 🍍
+        heavily inspired by
+        <a target="_blank" href="https://pomofocus.io/">pomofocus.io!</a>
+      </p>
+      <p class="copyright">©Piñafocus 2020. All Rights Reserved.</p>
+    </footer>
+  </body>
+  <script src="./script.js"></script>
+</html>

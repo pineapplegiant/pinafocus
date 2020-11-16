@@ -1,0 +1,241 @@
+/* ==========================================================================
+ GLOBAL STYLES
+======================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap");
+
+html {
+  color: #011103;
+  font-family: -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell,
+    Helvetica Neue;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+TYPOGRAPHY
+======================================================================== */
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.2px;
+  margin-top: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 24px;
+  padding-top: 8px;
+  border-bottom: 4px solid #ecde3f;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+Main/header
+======================================================================== */
+
+main {
+  width: 100%;
+  padding: 2em;
+  min-height: 766px;
+}
+
+.pomo {
+  background: #fdeb71;
+  transition: opacity 0.5s ease-in-out 0s;
+}
+
+.short {
+  background: #abdcff;
+  transition: background 0.5s ease-in-out 0s;
+}
+
+.long {
+  background: #ce9ffc;
+  transition: background 0.5s ease-in-out 0s;
+}
+
+header {
+  display: flex;
+  min-height: 60px;
+}
+
+img {
+  transform: rotate(-3deg);
+  width: 40px;
+}
+
+img:hover {
+  /*code to make that boy wiggle*/
+}
+
+.logo {
+  margin-top: auto;
+  font-family: "Comfortaa", cursive;
+  /*color: #fffb7d;*/
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 620px;
+  margin: auto;
+}
+
+/* ==========================================================================
+ Pomodoro Timer
+======================================================================== */
+
+.pomodoro {
+  width: 80%;
+  margin: 35px auto 15px auto;
+  border-radius: 10px;
+  padding: 20px 0px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.pomodoro_timer {
+  font-size: 102px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.pomodoro--button {
+  font-size: 1rem;
+  background: none;
+  height: 28px;
+  border-radius: 4px;
+  margin: 0;
+  padding: 2px 12px;
+  border: none;
+  outline: none;
+}
+
+.pomodoro--button:active {
+  transform: translateY(6px);
+  box-shadow: none;
+  outline: none;
+}
+
+.progress-bar {
+  width: 80%;
+  margin: 0 auto;
+  height: 7px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+}
+
+#progress-bar {
+  border-radius: 100px;
+  background-color: white;
+  width: 10%;
+  height: 7px;
+}
+
+.active {
+  font-weight: 700;
+  background: none rgba(0, 0, 0, 0.15);
+}
+
+.pomodoro_start--button {
+  cursor: pointer;
+  border: none;
+  margin: 20px 0px 0px;
+  padding: 0px 12px;
+  border-radius: 4px;
+  box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+  font-size: 24px;
+  height: 55px;
+  font-weight: 700;
+  width: 200px;
+  transition: color 0.5s ease-in-out 0s;
+}
+
+/* ==========================================================================
+HELP SECTION
+======================================================================== */
+
+.help-section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+  margin: 0 auto;
+  max-width: 75ch;
+}
+
+ol {
+  padding: revert;
+}
+
+section div:last-of-type {
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+FOOTER
+======================================================================== */
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 2px solid #efefef;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+footer p {
+  font-size: 12px;
+}
+.copyright {
+  padding-top: 5px;
+  color: #818181;
+}
+
+/* ==========================================================================
+MEDIA QUERIES
+======================================================================== */
+@media only screen and (min-width: 680px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  .section {
+    margin-top: 1rem;
+  }
+}
