@@ -18,9 +18,10 @@ const pomoButtons = document.querySelectorAll(".pomodoro--button");
 const pomoString = document.getElementById("pomodoro-string");
 const mainSection = document.getElementById("main");
 const startButton = document.getElementById("start");
-const progressBar = document.getElementById('progress-bar');
+const progressBar = document.getElementById("progress-bar");
 const docTitle = document.title;
-const buttonSound = new Audio('click.mp3');
+const buttonSound = new Audio("click.mp3");
+const hurray = new Audio("yay.m4a");
 
 // Used to STAHP the damn timer when pressed
 var wrapper;
@@ -110,7 +111,6 @@ function buttonClick(button) {
 ======================================================================== */
 
 function startTimer() {
-
   // Subtract inner clock
   timer["time"] = timer["time"] - 1;
 
@@ -127,13 +127,20 @@ function startTimer() {
 
   // UPDATE THE PROGRESSBAR
   // Fraction of time left over totaltime
-  let progress = (parseInt(timer[(timer["state"])]) * 60 - timer["time"]) / (parseInt(timer[(timer["state"])]) * 60); 
+  let progress =
+    (parseInt(timer[timer["state"]]) * 60 - timer["time"]) /
+    (parseInt(timer[timer["state"]]) * 60);
   progress = progress * 100;
   progressBar.style.width = `${progress}%`;
 
   if (timer["time"] <= 0) {
     // Redefine timer back to its original state
-    timer["time"] = parseInt(timer[(timer["state"])]) * 60;
+    timer["time"] = parseInt(timer[timer["state"]]) * 60;
+
+    if (timer["state"] == "pomo") {
+      celebrateGoodTimesCmon();
+    }
+    stopTimer();
     return;
   }
 }
@@ -143,4 +150,10 @@ function stopTimer() {
   startButton.dataset.action = "start";
   startButton.textContent = "start";
   startButton.classList.remove("active-start");
+}
+
+
+function celebrateGoodTimesCmon() {
+  hurray.play();
+  confetti.start(4000);
 }

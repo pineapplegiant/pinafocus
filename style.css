@@ -14,7 +14,7 @@ html {
   --blue: #5c85ff;
   --purple: #c95cff;
   --gray: #818181;
-  --darkGray: #1F1F1F;
+  --darkGray: #1f1f1f;
   --black: #000000;
 }
 
@@ -140,7 +140,7 @@ img:hover {
   margin: 10px;
   padding: 2px 12px;
   border: none;
-  outline: none;
+  /*outline: none;*/
   transition: color 0.2s ease-in-out 0s;
 }
 
