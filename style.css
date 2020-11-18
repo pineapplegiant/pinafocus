@@ -116,7 +116,7 @@ img:hover {
 ======================================================================== */
 
 .pomodoro {
-  width: 80%;
+  width: 90%;
   margin: 35px auto 15px auto;
   border-radius: 10px;
   padding: 30px 0px;
@@ -157,7 +157,7 @@ img:hover {
 }
 
 .progress-bar {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   height: 10px;
   background-color: rgba(0, 0, 0, 0.1);
