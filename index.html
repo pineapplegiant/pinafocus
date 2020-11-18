@@ -44,7 +44,9 @@
           </div>
           <div id="pomodoro-string" class="pomodoro_timer">25:00</div>
           <div class="pomodoro_start">
-            <button class="btn-grad pomodoro_start--button">START</button>
+            <button data-action="start" id="start" class="active-start btn-grad pomodoro_start--button">
+              START
+            </button>
           </div>
         </div>
         <div class="progress-bar">
@@ -70,10 +72,10 @@
         <p>
           A study technique designed to help break your tasks into sprints. This
           has shown to increase productivity in the long-run, allowing you to
-          take breaks and achieve your wildest dreams. I recommend
+          take breaks ultimately achieving your wildest dreams. I recommend
           <a href="https://todoist.com/productivity-methods/pomodoro-technique"
-            >Todoist's blog page</a
-          >, for more information.
+            >Todoist's blog</a
+          >, for more information about its utility.
         </p>
       </div>
       <div class="section">
@@ -81,7 +83,7 @@
         <ol>
           <li>Set the amount of time you want to work for the pomodoro.</li>
           <li>Press the start button.</li>
-          <li>Work till the timer goes off.</li>
+          <li>Work till the timer goes to zero.</li>
           <li>Take a break when you're done.</li>
           <li>Repeat until you're dead.</li>
           <li>Profit 🍍!</li>
