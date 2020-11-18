@@ -1,9 +1,3 @@
-/* ==========================================================================
- * timer objects is the data for the app
- * Data flows from the DOM to change timer and back to the DOM
-======================================================================== */
-
-// DATA
 const timer = {
   state: "pomo",
   time: 1500,
@@ -23,7 +17,7 @@ const docTitle = document.title;
 const buttonSound = new Audio("click.mp3");
 const hurray = new Audio("yay.m4a");
 
-// Used to STAHP the damn timer when pressed
+// Global Var used to STAHP the damn timer when pressed
 var wrapper;
 
 // EVENT LISTENERS
@@ -45,23 +39,19 @@ startButton.addEventListener("click", () => {
 
 /* ==========================================================================
  * handleButtons(clickEvent)
- *  updates the DOM by appending the active class to each button if clicked
+ *  updates the DOM by appending the active class to each button
  *  passes the button state to the buttonClick function
 ======================================================================== */
 function handleButtons(event) {
-  // If it's the pomoButton, do the thing
+  // We only want to do stuff if the button aint active
   if (event.target.tagName === "BUTTON") {
     if (event.target.classList.contains("active")) {
       return;
     } else {
-      // Remove the active class on each button first
       pomoButtons.forEach((btn) => {
         btn.classList.remove("active");
       });
-      // Add active class on button
       event.target.classList.add("active");
-
-      // Handle the specific button
       buttonClick(event.target.id); // 'pomo', 'short', 'long'
     }
   }
@@ -69,11 +59,10 @@ function handleButtons(event) {
 
 /* ==========================================================================
  * buttonClick(string -> button'id')
-*   toggles pomo/short/long class on the main section to change color 
+*   toggles the pomo/short/long CSS class on the main section to change color 
 ======================================================================== */
 function buttonClick(button) {
-  // Remove any class on mainSection first
-  // Change the text then the background
+  // Remove any class on mainSection first,change the text then the background
   switch (button) {
     case "pomo":
       mainSection.classList.remove("short");
@@ -91,52 +80,52 @@ function buttonClick(button) {
       console.log(`Sorry, I suck with this...? ${button}.`);
   }
 
-  // Change state internally
+  // Keep track of state internally
   timer["state"] = button; // pomo, short, long
-  timer["time"] = parseInt(timer[button]) * 60; // 25:00, 05:00, 15:00 -> 25, 5, 15 -> 1500, 300, 900
-  progressBar.style.width = 0; // Width of progressbar is 0
+
+  // 25:00, 05:00, 15:00 -> 25, 5, 15 -> 1500, 300, 900
+  timer["time"] = parseInt(timer[button]) * 60; 
 
   // Rerender DOM to correct time amount
+  progressBar.style.width = 0;
   pomoString.innerText = timer[button];
   document.title = `${timer[button]} — ${docTitle}`;
 
-  // Add style class to main
   mainSection.classList.add(button);
 
   stopTimer();
 }
+
 /* ==========================================================================
  * startTimer()
  *  event listener on start button that will handle the timer functionality 
 ======================================================================== */
-
 function startTimer() {
-  // Subtract inner clock
+
   timer["time"] = timer["time"] - 1;
 
-  // Manipulation to min/seconds
   let minutes = Math.floor(timer["time"] / 60);
   let seconds = timer["time"] % 60;
-
-  // If seconds or minutes are less than 10, redefine as double digit
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  // RERENDER THE DOM BABY!
+  // RERENDER DOM BABY!
   document.title = `${minutes}:${seconds} — ${docTitle}`;
   pomoString.innerText = `${minutes}:${seconds}`;
 
-  // UPDATE THE PROGRESSBAR
-  // Fraction of time left over totaltime
+  // UPDATE PROGRESSBAR
   let progress =
     (parseInt(timer[timer["state"]]) * 60 - timer["time"]) /
     (parseInt(timer[timer["state"]]) * 60);
   progress = progress * 100;
   progressBar.style.width = `${progress}%`;
 
+  // Timer is done!
   if (timer["time"] <= 0) {
+
     // Redefine timer back to its original state
     timer["time"] = parseInt(timer[timer["state"]]) * 60;
 
+    // If you finished the sprint then celebrate!
     if (timer["state"] == "pomo") {
       celebrateGoodTimesCmon();
     }
@@ -145,6 +134,12 @@ function startTimer() {
   }
 }
 
+/* ==========================================================================
+ * stopTimer()
+ *   ran whenever settings button is clicked, or stop button is pressed
+ *   uses builtin clearTimeout() to stop JS recursive setInterval() calls
+ *   updates start button to "START" mode
+======================================================================== */
 function stopTimer() {
   clearTimeout(wrapper);
   startButton.dataset.action = "start";
@@ -152,6 +147,12 @@ function stopTimer() {
   startButton.classList.remove("active-start");
 }
 
+
+/* ==========================================================================
+ * celebrateGoodTimesCmon()
+ *   called whenever pomodoro is done
+ *   displays confetti and music for the kids in all of us
+======================================================================== */
 
 function celebrateGoodTimesCmon() {
   hurray.play();
