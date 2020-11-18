@@ -84,12 +84,14 @@ main {
 
 header {
   display: flex;
-  min-height: 60px;
+  flex-direction: row;
+  height: 60px;
 }
 
 img {
   transform: rotate(-3deg);
   width: 40px;
+  height: auto;
 }
 
 img:hover {
