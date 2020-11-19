@@ -15,8 +15,10 @@ const mainSection = document.getElementById("main");
 const startButton = document.getElementById("start");
 const progressBar = document.getElementById("progress-bar");
 const docTitle = document.title;
+const message = document.getElementById("message");
 const buttonSound = new Audio("click.mp3");
 const hurray = new Audio("yay.m4a");
+const hey = new Audio("hey.mp3");
 
 // NOTIFICATIONS GRANTED PERMISSION
 document.addEventListener("DOMContentLoaded", () => {
@@ -92,14 +94,17 @@ function buttonClick(button) {
     case "pomo":
       mainSection.classList.remove("short");
       mainSection.classList.remove("long");
+      toggleMessage("Let's get to work!");
       break;
     case "short":
       mainSection.classList.remove("pomo");
       mainSection.classList.remove("long");
+      toggleMessage("Time for a break!");
       break;
     case "long":
       mainSection.classList.remove("pomo");
       mainSection.classList.remove("short");
+      toggleMessage("Time for a break!");
       break;
     default:
       console.log(`Sorry, I suck with this...? ${button}.`);
@@ -143,21 +148,25 @@ function startTimer() {
   progress = progress * 100;
   progressBar.style.width = `${progress}%`;
 
-  // Timer is DONE!
-  if (timer["time"] <= 0) {
+  // TIMER IS DONE!
+  if (timer.time <= 0) {
     // Redefine timer back to its original state
-    timer["time"] = parseInt(timer[timer["state"]]) * 60;
+    timer.time = parseInt(timer[timer["state"]]) * 60;
 
     // Notification for the homies to stop
     if (Notification.permission === "granted" && timer.granted) {
       const text =
         timer.state === "pomo" ? "Get back to work my guy!" : "Take a break, you've done good brother!";
       new Notification(text);
+
     }
 
     // If you finished the sprint then celebrate!
-    if (timer["state"] == "pomo") {
+    // If you didn't then back to work my guy
+    if (timer.state == "pomo") {
       celebrateGoodTimesCmon();
+    } else {
+      backToWorkBaby();
     }
 
     stopTimer();
@@ -185,6 +194,31 @@ function stopTimer() {
 ======================================================================== */
 
 function celebrateGoodTimesCmon() {
+  toggleMessage("You deff deserve a break now!");
   hurray.play();
   confetti.start(4000);
 }
+
+/* ==========================================================================
+ * backToWorkBaby()
+ *   called whenever break is done
+ *   sounds a kid saying hey 4x
+======================================================================== */
+
+function backToWorkBaby() {
+  hey.play();
+  toggleMessage("Okiee let's work now!");
+}
+
+function toggleMessage(msg) {
+  message.innerText = msg;
+}
+
+// Necessary for accidental reload
+window.onbeforeunload = function() {
+   if (data_needs_saving()) {
+       return "Just displaying this incase you're in the middle of a pomodoro!";
+   } else {
+      return;
+   }
+};
