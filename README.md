@@ -5,9 +5,7 @@
     <img src="./screenshot.png" alt="My screenshot of my project">
 </center>
 
-Built to showcase them vanilla Javascript skills.
-
-
+Built to keep me focused.
 
 ## Tools
 
@@ -16,9 +14,3 @@ Built to showcase them vanilla Javascript skills.
 * Inspiration - [Pomofocus](https://pomofocus.io/)
 * Typography:
     - [Comfortaa](https://fonts.google.com/specimen/Comfortaa?query=comforta)
-
-
-## TODO
-* Fix gradient on body
-* Fix settings buttons click
-* Fix button CSS on normal

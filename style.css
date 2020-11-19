@@ -10,12 +10,29 @@ html {
   line-height: 1.5;
 }
 :root {
-  --yellow: #ffe45c;
-  --blue: #5c85ff;
-  --purple: #c95cff;
+
+  /*YELLOW*/
+  --yellow: #ffd60a;
+  --yellow2: #ffbe0a;
+  --yellowGradient: radial-gradient(circle,var(--yellow) 0%,var(--yellow2) 100%);
+
+  /*BLUE*/
+  --blue: #470aff;
+  --blue2: #850aff;
+  --blueGradient: radial-gradient(circle, var(--blue) 0%, var(--blue2) 100%);
+
+  /*GREEN*/
+  --green: #A9F316;
+  --green: #29F316;
+  --greenGradient: radial-gradient(circle, var(--green) 0%, var(--green) 100%);
+
+  /*Extra colors*/
   --gray: #818181;
+  --mediumGray: #E6E6E6;
+  --mediumGrayHover: hsl(0, 0%, 85%);
   --darkGray: #1f1f1f;
   --black: #000000;
+  --startButton: #149608;
 }
 
 /* ==========================================================================
@@ -26,11 +43,11 @@ h1,
 h2,
 h3,
 h4 {
-  letter-spacing: -0.2px;
-  margin-top: 2rem;
   font-weight: bold;
+  letter-spacing: -0.2px;
   line-height: 1.2;
   margin-bottom: 0;
+  margin-top: 2rem;
 }
 h1 {
   font-size: 24px;
@@ -49,12 +66,12 @@ h4 {
 }
 
 h2::after {
+  border-bottom: 4px solid #ffdd33;
   content: "";
   display: block;
-  width: 24px;
-  padding-top: 8px;
-  border-bottom: 4px solid #ffdd33;
   opacity: 0.6;
+  padding-top: 8px;
+  width: 24px;
 }
 
 /* ==========================================================================
@@ -62,23 +79,26 @@ Main/header
 ======================================================================== */
 
 main {
-  width: 100%;
-  padding: 2em;
   min-height: 766px;
+  padding: 2em;
+  width: 100%;
 }
 
 .pomo {
   background: var(--yellow);
+  background: var(--yellowGradient);
   transition: background 0.5s ease-in-out 0s;
 }
 
 .short {
   background: var(--blue);
+  background: var(--blueGradient);
   transition: background 0.5s ease-in-out 0s;
 }
 
 .long {
-  background: var(--purple);
+  background: var(--green);
+  background: var(--greenGradient);
   transition: background 0.5s ease-in-out 0s;
 }
 
@@ -89,9 +109,9 @@ header {
 }
 
 img {
+  height: auto;
   transform: rotate(-3deg);
   width: 40px;
-  height: auto;
 }
 
 img:hover {
@@ -99,16 +119,17 @@ img:hover {
 }
 
 .logo {
-  margin-top: auto;
+  color: var(--black);
   font-family: "Comfortaa", cursive;
-  /*color: #fffb7d;*/
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 700;
+  margin-left: 2px;
+  margin-top: auto;
 }
 
 .container {
-  max-width: 620px;
   margin: auto;
+  max-width: 620px;
 }
 
 /* ==========================================================================
@@ -116,95 +137,121 @@ img:hover {
 ======================================================================== */
 
 .pomodoro {
-  width: 90%;
-  margin: 35px auto 15px auto;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
-  padding: 30px 0px;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.6);
+  margin: 15px auto auto;
+  padding: 30px 0px;
+  width: 90%;
 }
 
 .pomodoro_timer {
-  margin-top: 1rem;
-  letter-spacing: 2px;
   font-size: 68px;
   font-weight: 700;
-}
-
-.pomodoro--button {
-  color: var(--darkGray);
-  font-size: 1rem;
-  background: none;
-  height: 28px;
-  border-radius: 4px;
-  margin: 10px;
-  padding: 2px 12px;
-  border: none;
-  /*outline: none;*/
-  transition: color 0.2s ease-in-out 0s;
-}
-
-.pomodoro--button:hover {
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.pomodoro--button:active {
-  transform: translateY(1px);
-  box-shadow: none;
-  outline: none;
-}
-
-.progress-bar {
-  width: 90%;
-  margin: 0 auto;
-  height: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 100px;
-}
-
-#progress-bar {
-  border-radius: 100px;
-  background-color: white;
-  width: 0%;
-  height: 10px;
-}
-
-.active {
-  color: var(--black);
-  font-weight: 700;
-}
-
-.active-start {
-  transform: translateY(6px);
-  box-shadow: none;
-  outline: none;
-}
-
-.pomodoro_start--button {
-  text-transform: uppercase;
-  cursor: pointer;
-  border: none;
-  margin: 20px 0px 0px;
-  padding: 0px 12px;
-  border-radius: 4px;
-  /*box-shadow: rgb(235, 235, 235) 0px 6px 0px;*/
-  font-size: 22px;
-  height: 55px;
-  font-weight: 700;
-  width: 160px;
-  transition: color 0.2s ease-in-out 0s;
-}
-
-.pomodoro_start--button:hover {
-  color: rgba(0, 0, 0, 0.65);
+  letter-spacing: 2px;
+  margin-top: 1rem;
 }
 
 .pomodoro_settings {
   display: flex;
   flex-direction: column;
 }
+
+.progress-bar {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  height: 10px;
+  margin: 30px auto 0;
+  width: 90%;
+}
+
+#progress-bar {
+  background-color: white;
+  border-radius: 100px;
+  height: 10px;
+  width: 0%;
+}
+
+/* ==========================================================================
+  Buttons
+======================================================================== */
+
+.pomodoro--button {
+  background: transparent;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(0, 0%, 98%);
+  color: var(--darkGray);
+  font-size: 1rem;
+  height: 36px;
+  margin-bottom: 1.45rem;
+  outline: none;
+  padding: 2px 12px;
+  transition: color 0.2s ease-in-out 0s;
+  width: 135px;
+
+}
+
+.pomodoro--button:hover,
+.pomodoro--button:focus {
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.75);
+  transition: background 0.2s ease-in-out 0s;
+  
+}
+
+/*PRESSING button*/
+.pomodoro--button:active {
+  box-shadow: 0 -2px 0 hsla(0, 0%, 100%, .15), inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
+  color: var(--black);
+  outline: none;
+  transform: translateY(1px);
+}
+
+/*Button pressed*/
+.active {
+  box-shadow: 0 -2px 0 hsla(0, 0%, 100%, .15), inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
+  color: var(--black);
+  font-weight: 700;
+}
+
+/*START Button*/
+.pomodoro_start--button {
+  background: var(--mediumGray);
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, .2);
+  color: var(--black);
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 700;
+  height: 55px;
+  margin: 2rem 0px 5px;
+  padding: 0px 12px;
+  text-transform: uppercase;
+  width: 160px;
+  outline: none;
+}
+
+.pomodoro_start--button:hover,
+.pomodoro_start--button:focus {
+  background: var(--mediumGrayHover);
+  transition: background 0.2s ease-in-out 0s;
+}
+
+.pomodoro_start--button:active {
+  transform: translateY(6px);
+}
+
+/*Start Button pressed*/
+.active-start {
+  outline: none;
+  transform: translateY(6px);
+}
+
 
 /* ==========================================================================
 HELP SECTION
@@ -213,9 +260,9 @@ HELP SECTION
 .help-section {
   display: flex;
   flex-direction: column;
-  padding: 0 12px;
   margin: 0 auto;
   max-width: 75ch;
+  padding: 0 12px;
 }
 
 ol {
@@ -230,14 +277,14 @@ section div:last-of-type {
 FOOTER
 ======================================================================== */
 footer {
-  text-align: center;
-  padding: 30px;
+  align-items: center;
   border-top: 2px solid #efefef;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+  width: 100%;
 }
 
 footer p {
@@ -263,8 +310,11 @@ MEDIA QUERIES
   }
 
   .pomodoro--button {
-    margin: 0;
+    height: 36px;
+    width: 115px;
+    margin: 7px;
   }
+    
 }
 
 @media only screen and (min-width: 680px) {
@@ -292,4 +342,5 @@ MEDIA QUERIES
     width: 200px;
     font-size: 24px;
   }
+
 }

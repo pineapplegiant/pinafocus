@@ -1,4 +1,5 @@
 const timer = {
+  granted: false,
   state: "pomo",
   time: 1500,
   pomo: "25:00",
@@ -16,6 +17,30 @@ const progressBar = document.getElementById("progress-bar");
 const docTitle = document.title;
 const buttonSound = new Audio("click.mp3");
 const hurray = new Audio("yay.m4a");
+
+// NOTIFICATIONS GRANTED PERMISSION
+document.addEventListener("DOMContentLoaded", () => {
+  // Check if the browser supports notifications
+  if ("Notification" in window) {
+    // If notification permissions have neither been granted or denied
+    if (
+      Notification.permission !== "granted" &&
+      Notification.permission !== "denied"
+    ) {
+      // Ask user permission
+      Notification.requestPermission().then(function (permission) {
+        // If permission granted
+        if (permission === "granted") {
+          // Create a new notification
+          new Notification(
+            "Coolio! You will be notified when each session is done!"
+          );
+          timer.granted = true;
+        }
+      });
+    }
+  }
+});
 
 // Global Var used to STAHP the damn timer when pressed
 var wrapper;
@@ -84,7 +109,7 @@ function buttonClick(button) {
   timer["state"] = button; // pomo, short, long
 
   // 25:00, 05:00, 15:00 -> 25, 5, 15 -> 1500, 300, 900
-  timer["time"] = parseInt(timer[button]) * 60; 
+  timer["time"] = parseInt(timer[button]) * 60;
 
   // Rerender DOM to correct time amount
   progressBar.style.width = 0;
@@ -101,7 +126,6 @@ function buttonClick(button) {
  *  event listener on start button that will handle the timer functionality 
 ======================================================================== */
 function startTimer() {
-
   timer["time"] = timer["time"] - 1;
 
   let minutes = Math.floor(timer["time"] / 60);
@@ -119,16 +143,23 @@ function startTimer() {
   progress = progress * 100;
   progressBar.style.width = `${progress}%`;
 
-  // Timer is done!
+  // Timer is DONE!
   if (timer["time"] <= 0) {
-
     // Redefine timer back to its original state
     timer["time"] = parseInt(timer[timer["state"]]) * 60;
+
+    // Notification for the homies to stop
+    if (Notification.permission === "granted" && timer.granted) {
+      const text =
+        timer.state === "pomo" ? "Get back to work my guy!" : "Take a break, you've done good brother!";
+      new Notification(text);
+    }
 
     // If you finished the sprint then celebrate!
     if (timer["state"] == "pomo") {
       celebrateGoodTimesCmon();
     }
+
     stopTimer();
     return;
   }
@@ -146,7 +177,6 @@ function stopTimer() {
   startButton.textContent = "start";
   startButton.classList.remove("active-start");
 }
-
 
 /* ==========================================================================
  * celebrateGoodTimesCmon()
