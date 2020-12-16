@@ -1,3 +1,4 @@
+
 const timer = {
   granted: false,
   state: "pomo",
@@ -11,6 +12,7 @@ const timer = {
 const pomoSettings = document.getElementById("settings");
 const pomoButtons = document.querySelectorAll(".pomodoro--button");
 const pomoString = document.getElementById("pomodoro-string");
+//const configuration = document.getElementById("configuration"); // Modal button
 const mainSection = document.getElementById("main");
 const startButton = document.getElementById("start");
 const progressBar = document.getElementById("progress-bar");
@@ -20,8 +22,12 @@ const buttonSound = new Audio("click.mp3");
 const hurray = new Audio("yay.m4a");
 const hey = new Audio("hey.mp3");
 
+configuration.addEventListener("click", () => {
+})
+
 // NOTIFICATIONS GRANTED PERMISSION
 document.addEventListener("DOMContentLoaded", () => {
+  MicroModal.init();
   // Check if the browser supports notifications
   if ("Notification" in window) {
     // If notification permissions have neither been granted or denied
@@ -44,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
 // Global Var used to STAHP the damn timer when pressed
 var wrapper;
 
@@ -63,6 +70,11 @@ startButton.addEventListener("click", () => {
     stopTimer();
   }
 });
+
+// OPEN MODAL
+//configuration.addEventListener("click", () => {
+  //alert("Hey let's do this &times");
+//})
 
 /* ==========================================================================
  * handleButtons(clickEvent)
