@@ -12,7 +12,6 @@ const timer = {
 const pomoSettings = document.getElementById("settings");
 const pomoButtons = document.querySelectorAll(".pomodoro--button");
 const pomoString = document.getElementById("pomodoro-string");
-//const configuration = document.getElementById("configuration"); // Modal button
 const mainSection = document.getElementById("main");
 const startButton = document.getElementById("start");
 const progressBar = document.getElementById("progress-bar");
@@ -21,6 +20,9 @@ const message = document.getElementById("message");
 const buttonSound = new Audio("click.mp3");
 const hurray = new Audio("yay.m4a");
 const hey = new Audio("hey.mp3");
+const pomoInput = document.getElementById("pomodoro-input");
+const shortInput = document.getElementById("short-input");
+const longInput = document.getElementById("long-input");
 
 configuration.addEventListener("click", () => {
 })
