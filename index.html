@@ -33,16 +33,26 @@
   </head>
   <body>
     <!--Top Section-->
-    <main class="pomo" id="main">
+    <main role="main" class="main pomo" id="main">
       <div class="container">
-        <header>
-          <img src="pineapple.svg" />
-          <p class="logo">Piñafocus</p>
+        <header class="header">
+          <div>
+            <img alt="A funky pineapple shaped logo" src="pineapple.svg" />
+            <p class="logo">Piñafocus</p>
+          </div>
+          <button
+            data-micromodal-trigger="modal-1"
+            class="pomodoro--button"
+            id="configuration"
+          >
+            Settings
+          </button>
         </header>
         <h1 id="message">Let's get to work!</h1>
         <div class="progress-bar">
           <div id="progress-bar"></div>
         </div>
+
         <div class="pomodoro">
           <div id="settings" class="pomodoro_settings">
             <button id="pomo" class="active pomodoro--button">
@@ -62,6 +72,74 @@
             </button>
           </div>
         </div>
+        <!--MODAL (notice inside container)-->
+        <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+          <!--overlay-->
+          <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <!--modal container-->
+            <div
+              class="modal__container"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-1-title"
+            >
+              <!--modal header-->
+              <header class="modal__header">
+                <h2 class="modal__description" id="modal-1-title">
+                  Timer Settings
+                </h2>
+                <button
+                  class="modal__close"
+                  aria-label="Close modal"
+                  data-micromodal-close
+                ></button>
+              </header>
+              <main class="modal__content" id="modal-1-content">
+                <div class="modal__inputs">
+                  <div>
+                    <label for="pomodoro-input">Pomodoro</label>
+                    <input
+                      id="pomodoro-input"
+                      type="number"
+                      min="1"
+                      step="1"
+                      max="100"
+                    />
+                  </div>
+                  <div>
+                    <label for="short-input">Short Break</label>
+                    <input
+                      id="short-input"
+                      type="number"
+                      min="1"
+                      step="1"
+                      max="100"
+                    />
+                  </div>
+                  <div>
+                    <label for="long-input">Long Break</label>
+                    <input
+                      id="long-input"
+                      type="number"
+                      min="1"
+                      step="1"
+                      max="100"
+                    />
+                  </div>
+                </div>
+              </main>
+              <footer class="modal__footer">
+                <button
+                  class="modal__btn"
+                  aria-label="Close this dialog window"
+                  id="ok-btn"
+                >
+                  OK
+                </button>
+              </footer>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <!--Explaining pomodoro section-->
@@ -70,7 +148,7 @@
         A barebones browser-based Pomodoro timer to help you stay focused!
       </h1>
       <div class="section">
-        <h2>What is 🍍Piñafocus?</h2>
+        <h2 class="h2">What is 🍍Piñafocus?</h2>
         <p>
           A very basic web based Pomodoro application that's written with
           vanilla Javascript and HTML. It is a non-impressive pineapple clone of
@@ -78,7 +156,7 @@
         </p>
       </div>
       <div class="section">
-        <h2>What is the Pomodoro Technique?</h2>
+        <h2 class="h2">What is the Pomodoro Technique?</h2>
         <p>
           A study technique designed to help break your tasks into sprints. This
           has shown to increase productivity in the long-run, allowing you to
@@ -89,7 +167,7 @@
         </p>
       </div>
       <div class="section">
-        <h2>How do I use the Pomodoro timer?</h2>
+        <h2 class="h2">How do I use the Pomodoro timer?</h2>
         <ol>
           <li>Set the amount of time you want to work for the pomodoro.</li>
           <li>Press the start button.</li>
@@ -115,4 +193,5 @@
   </body>
   <script src="./script.js"></script>
   <script src="./confetti.min.js"></script>
+  <script src="./micromodal.min.js"></script>
 </html>
