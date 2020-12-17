@@ -98,15 +98,33 @@
                 <div class="modal__inputs">
                   <div>
                     <label for="pomodoro-input">Pomodoro</label>
-                    <input id="pomodoro-input" type="number" min="1" step="1" />
+                    <input
+                      id="pomodoro-input"
+                      type="number"
+                      min="1"
+                      step="1"
+                      max="100"
+                    />
                   </div>
                   <div>
                     <label for="short-input">Short Break</label>
-                    <input id="short-input" type="number" min="1" step="1" />
+                    <input
+                      id="short-input"
+                      type="number"
+                      min="1"
+                      step="1"
+                      max="100"
+                    />
                   </div>
                   <div>
                     <label for="long-input">Long Break</label>
-                    <input id="long-input" type="number" min="1" step="1" />
+                    <input
+                      id="long-input"
+                      type="number"
+                      min="1"
+                      step="1"
+                      max="100"
+                    />
                   </div>
                 </div>
               </main>
@@ -114,6 +132,7 @@
                 <button
                   class="modal__btn"
                   aria-label="Close this dialog window"
+                  id="ok-btn"
                 >
                   OK
                 </button>

@@ -96,19 +96,19 @@ Main/header
 
 .pomo {
   background: var(--yellow);
-  background: var(--yellowGradient);
+  /*background: var(--yellowGradient);*/
   transition: background 0.5s ease-in-out 0s;
 }
 
 .short {
   background: var(--blue);
-  background: var(--blueGradient);
+  /*background: var(--blueGradient);*/
   transition: background 0.5s ease-in-out 0s;
 }
 
 .long {
   background: var(--green);
-  background: var(--greenGradient);
+  /*background: var(--greenGradient);*/
   transition: background 0.5s ease-in-out 0s;
 }
 

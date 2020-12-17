@@ -23,13 +23,39 @@ const hey = new Audio("hey.mp3");
 const pomoInput = document.getElementById("pomodoro-input");
 const shortInput = document.getElementById("short-input");
 const longInput = document.getElementById("long-input");
+const ok = document.getElementById("ok-btn");
 
-configuration.addEventListener("click", () => {
+ok.addEventListener("click", () => {
+  stopTimer();
+
+  // Set the state to the inputs
+  timer.pomo = pomoInput.value + ":00";
+  timer.short = shortInput.value + ":00";
+  timer.long = longInput.value + ":00";
+
+  // Restart timer state
+  progressBar.style.width = 0;
+  timer.time = parseInt(timer[timer["state"]]) * 60;
+
+  let minutes = Math.floor(timer["time"] / 60);
+  let seconds = timer["time"] % 60;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  // RERENDER DOM BABY!
+  document.title = `${minutes}:${seconds} — ${docTitle}`;
+  pomoString.innerText = `${minutes}:${seconds}`;
+
+  // Close the modal
+  MicroModal.close();
+
+
 })
+
 
 // NOTIFICATIONS GRANTED PERMISSION
 document.addEventListener("DOMContentLoaded", () => {
   MicroModal.init();
+  setValues();
   // Check if the browser supports notifications
   if ("Notification" in window) {
     // If notification permissions have neither been granted or denied
@@ -56,6 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // Global Var used to STAHP the damn timer when pressed
 var wrapper;
 
+// Set values on micromodal
+function setValues () {
+  pomoInput.value = parseInt(timer.pomo);
+  shortInput.value = parseInt(timer.short);
+  longInput.value = parseInt(timer.long);
+}
+
+
 // EVENT LISTENERS
 pomoSettings.addEventListener("click", handleButtons);
 startButton.addEventListener("click", () => {
@@ -72,11 +106,6 @@ startButton.addEventListener("click", () => {
     stopTimer();
   }
 });
-
-// OPEN MODAL
-//configuration.addEventListener("click", () => {
-  //alert("Hey let's do this &times");
-//})
 
 /* ==========================================================================
  * handleButtons(clickEvent)
