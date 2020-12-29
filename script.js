@@ -24,6 +24,7 @@ const pomoInput = document.getElementById("pomodoro-input");
 const shortInput = document.getElementById("short-input");
 const longInput = document.getElementById("long-input");
 const ok = document.getElementById("ok-btn");
+let volume = document.getElementById("modal__volume-control");
 
 ok.addEventListener("click", () => {
   stopTimer();
@@ -84,9 +85,14 @@ var wrapper;
 
 // Set values on micromodal
 function setValues () {
+  // Time
   pomoInput.value = parseInt(timer.pomo);
   shortInput.value = parseInt(timer.short);
   longInput.value = parseInt(timer.long);
+  // Volume
+  buttonSound.volume = 0.5;
+  hurray.volume = 0.5;
+  hey.volume = 0.5;
 }
 
 
@@ -106,6 +112,13 @@ startButton.addEventListener("click", () => {
     stopTimer();
   }
 });
+
+// Change the Volume Slider
+volume.addEventListener("change", function(e) {
+  buttonSound.volume = e.currentTarget.value / 100;
+  hurray.volume = e.currentTarget.value / 100;
+  hey.volume = e.currentTarget.value / 100;
+})
 
 /* ==========================================================================
  * handleButtons(clickEvent)

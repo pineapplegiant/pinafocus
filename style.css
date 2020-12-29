@@ -41,6 +41,12 @@ html {
   --startButtonHover: #92d671;
 }
 
+input,
+button,
+a {
+  outline-color: var(--gray);
+}
+
 /* ==========================================================================
 TYPOGRAPHY
 ======================================================================== */
@@ -135,6 +141,7 @@ img {
 }
 
 img:hover {
+  /* TODO: give the logo some love*/
   /*code to make that boy wiggle*/
 }
 
@@ -224,7 +231,6 @@ img:hover {
   font-size: 1rem;
   height: 36px;
   margin-bottom: 1.45rem;
-  outline-color: var(--gray);
   padding: 2px 12px;
   transition: color 0.2s ease-in-out 0s;
   width: 135px;
@@ -242,7 +248,6 @@ img:hover {
   box-shadow: 0 -2px 0 hsla(0, 0%, 100%, 0.15),
     inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
   color: var(--black);
-  outline-color: var(--gray);
   transform: translateY(1px);
 }
 
@@ -270,7 +275,6 @@ img:hover {
   padding: 0px 12px;
   text-transform: uppercase;
   width: 195px;
-  outline-color: var(--gray);
 }
 
 .pomodoro_start--button:hover,
@@ -285,7 +289,6 @@ img:hover {
 
 /*Start Button pressed*/
 .active-start {
-  outline-color: var(--gray);
   transform: translateY(6px);
 }
 
@@ -358,7 +361,7 @@ MODAL
   padding: 30px;
   max-width: 500px;
   min-width: 350px;
-  height: 305px;
+  /*height: 305px;*/
   border-radius: 10px;
   overflow-y: auto;
 }
@@ -367,7 +370,7 @@ MODAL
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 24px;
+  margin-bottom: 1.3rem;
 }
 
 .modal__title {
@@ -419,7 +422,7 @@ MODAL
   padding: 10px;
 }
 
-.modal__inputs div label {
+label {
   font-size: 16px;
   padding-bottom: 4px;
   font-weight: 700;
@@ -442,15 +445,25 @@ MODAL
   text-align: end;
 }
 
+.modal__volume {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0.5rem auto 0;
+}
+
+#modal__volume {
+}
+
 .modal__btn {
   width: 102px;
-  height: 32px;
+  height: 36px;
   font-size: 0.875rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: #e6e6e6;
+  background-color: var(--mediumGray);
   color: rgba(0, 0, 0, 0.8);
   border-radius: 0.25rem;
   border-style: none;
@@ -474,8 +487,8 @@ MODAL
 
 .modal__btn:focus,
 .modal__btn:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+  background-color: var(--mediumGrayHover);
+  transition: background 0.2s ease-in-out 0s;
 }
 
 .modal__btn-primary {
